@@ -35,11 +35,11 @@ function onGetBigImg(event) {
   const url = event.target.dataset.source;
   const instance = basicLightbox.create(`<img width="1400" height="900" src=${url}>`, {
     onShow: (instance) => {
-      containerItems.addEventListener('keydown', onEscKeyPress);
+      window.addEventListener('keydown', onEscKeyPress);
       // console.log('вішаю слухача Esc');
     },
     onClose: (instance) => {
-      containerItems.removeEventListener('keydown', onEscKeyPress);
+      window.removeEventListener('keydown', onEscKeyPress);
       // console.log('знімаю слухача Еsс');
     },
   });
