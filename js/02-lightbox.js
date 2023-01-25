@@ -8,7 +8,6 @@ const list = document.querySelector('.gallery');
 const listItemsMarkup = createListItemsMarkup(galleryItems);
 
 list.innerHTML = listItemsMarkup;
-list.addEventListener('click', onOpenImg);
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
@@ -16,12 +15,6 @@ const lightbox = new SimpleLightbox('.gallery a', {
   animationSpeed: 800,
 });
 
-function onOpenImg(event) {
-  event.preventDefault();
-  if (event.target.nodeName !== 'IMG') {
-    return;
-  }
-}
 
 function createListItemsMarkup(items) {
   return items
