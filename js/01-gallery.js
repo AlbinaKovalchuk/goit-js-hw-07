@@ -12,6 +12,7 @@
 //  Бібліотека basicLightbox містить метод для програмного закриття модального вікна.
 
 import { galleryItems } from './gallery-items.js';
+
 const containerItems = document.querySelector('.gallery');
 const itemsDivMarkup = createItemsMarkup(galleryItems);
 containerItems.innerHTML = itemsDivMarkup;
@@ -25,22 +26,31 @@ function onGetBigImg(event) {
   }
 
   // === оголосити фукцію яка буде слухати Escape`и викликати instance.close()   ============
-  function onEscKeyPress(event) {
+  // function onEscKeyPress(event) {
+  //   if (event.code === 'Escape') {
+  //     instance.close();
+  //     return;
+  //   }
+  // }
+//    або так..
+  const onEscKeyPress = (event) => {
     if (event.code === 'Escape') {
+      console.log('Ооо нажали Esc - все закрываю');
       instance.close();
       return;
     }
-  }
-  // ============================================
+  };
+  // // ============================================
+
   const url = event.target.dataset.source;
   const instance = basicLightbox.create(`<img width="1400" height="900" src=${url}>`, {
     onShow: (instance) => {
       window.addEventListener('keydown', onEscKeyPress);
-      // console.log('вішаю слухача Esc');
+       console.log('вішаю слухача Esc');
     },
     onClose: (instance) => {
       window.removeEventListener('keydown', onEscKeyPress);
-      // console.log('знімаю слухача Еsс');
+      console.log('знімаю слухача Еsс');
     },
   });
   instance.show();
